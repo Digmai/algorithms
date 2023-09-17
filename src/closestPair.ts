@@ -3,22 +3,24 @@ interface Point {
   y: number;
 }
 
-console.log(
-  closestPair(
-    [
-      {
-        x: 2,
-        y: 2,
-      },
-    ],
-    [
-      {
-        x: 4,
-        y: 4,
-      },
-    ]
-  )
-);
+const points: Point[] = [
+  { x: 1, y: 2 },
+  { x: 3, y: 4 },
+  { x: 5, y: 6 },
+  { x: 7, y: 8 },
+  { x: 9, y: 10 },
+];
+
+// Сортировка точек по координате X
+const sortedPointsX = points.slice().sort((a, b) => a.x - b.x);
+
+// Сортировка точек по координате Y
+const sortedPointsY = points.slice().sort((a, b) => a.y - b.y);
+
+// Вызов функции closestPair
+const closestPoints = closestPair(sortedPointsX, sortedPointsY);
+
+console.log("Ближайшая пара точек:", closestPoints);
 
 function closestPair(px: Point[], py: Point[]): [Point, Point] {
   const n = px.length;
