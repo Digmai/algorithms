@@ -1,5 +1,5 @@
-import { generateArray } from "./utils/generateArray";
-import generateArrayIndex from "./utils/generateArrayIndex";
+import { generateArray } from "../utils/generateArray";
+import generateArrayIndex from "../utils/generateArrayIndex";
 
 function FindNumberElement(
   arr: number[],
