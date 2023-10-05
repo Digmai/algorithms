@@ -1,3 +1,3 @@
 export default (dozen: number) => {
-  return Math.floor(Math.random() * 10) + dozen * 10;
+  return ~~(Math.random() * 3289) * ~~(Math.random() * 289) + dozen;
 };

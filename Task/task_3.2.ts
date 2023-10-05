@@ -65,10 +65,10 @@ function findMaxElement2(arr: number[]): number {
 
 //
 
-const arr = generateArray(900000);
+const arr = generateArray(10000);
 
 //
 
 Promise.resolve(findMaxElement2(arr)).then(console.log);
 // Promise.resolve(helperFindMaxElement(arr)).then(console.log);
-console.log(arr);
+console.log(arr.sort((a, b) => a - b)[arr.length - 1]);
