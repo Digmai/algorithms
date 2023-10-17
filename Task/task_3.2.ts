@@ -32,19 +32,24 @@ function mainFindMaxElement(arr: number[]): number {
   return A > B ? A : B;
 }
 
-function findMaxElementRecursive(
-  arr: number[],
+function defFn(p: any) {
+  return p;
+}
+
+export function findMaxElementRecursive<T>(
+  arr: T[],
   left: number,
-  right: number
+  right: number,
+  fn: <P extends T>(p: P) => number
 ): number {
   if (left === right) {
-    return arr[left];
+    return fn(arr[left]);
   }
 
   const mid = Math.floor((left + right) / 2);
 
-  const maxLeft = findMaxElementRecursive(arr, left, mid);
-  const maxRight = findMaxElementRecursive(arr, mid + 1, right);
+  const maxLeft = findMaxElementRecursive(arr, left, mid, fn);
+  const maxRight = findMaxElementRecursive(arr, mid + 1, right, fn);
 
   return Math.max(maxLeft, maxRight);
 }
@@ -58,7 +63,7 @@ function helperFindMaxElement(arr: number[]): number {
 
 function findMaxElement2(arr: number[]): number {
   console.time("findMaxElement2");
-  let num = findMaxElementRecursive(arr, 0, arr.length - 1);
+  let num = findMaxElementRecursive(arr, 0, arr.length - 1, defFn);
   console.timeEnd("findMaxElement2");
   return num;
 }
