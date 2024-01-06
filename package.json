@@ -1,6 +1,7 @@
 {
   "name": "algorithms",
   "module": "index.ts",
+  "type": "commonjs",
   "devDependencies": {
   },
   "peerDependencies": {
