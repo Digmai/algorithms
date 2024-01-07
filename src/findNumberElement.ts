@@ -9,7 +9,7 @@ function FindNumberElement(
 ): number | undefined {
   if (left === right) return arr[left];
 
-  const mid = Math.floor((left + right) / 2);
+  const mid = ~~((left + right) / 2);
 
   const A = FindNumberElement(arr, left, mid, i);
   const B = FindNumberElement(arr, mid + 1, right, i);
