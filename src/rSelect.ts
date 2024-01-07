@@ -2,22 +2,25 @@ import { generateArray } from "../utils/generateArray";
 import partition from "./partition";
 import quickSort from "./quickSort";
 
-export default function RSelect(arr: number[], i: number) {
-  if (arr.length === 1) return arr[0];
+export default function RSelect(
+  arr: number[],
+  i: number,
+  left: number = 0,
+  right: number = arr.length - 1
+) {
+  if (left === right) return arr[left];
 
-  let temp = arr;
+  const pivotIndex = partition(arr, left, right);
 
-  const pivotIndex = partition(temp, 0, arr.length - 1);
-
-  if (pivotIndex === i) return temp[pivotIndex];
-  if (pivotIndex > i) return RSelect(temp.slice(0, pivotIndex), i);
-  else return RSelect(temp.slice(pivotIndex, temp.length), i - pivotIndex);
+  if (pivotIndex === i) return arr[pivotIndex];
+  if (i < pivotIndex - 1) return RSelect(arr, i, left, pivotIndex - 1);
+  else return RSelect(arr, i - pivotIndex, pivotIndex, right);
 }
 
 let arr = generateArray(15);
 let tempArr = arr;
 quickSort(tempArr);
-let i = 7;
 
-console.log(RSelect(arr, i));
-console.log(RSelect(tempArr, i));
+for (let index = 0; index < 20; index++) {
+  console.log(RSelect(arr, index) === RSelect(tempArr, index));
+}
